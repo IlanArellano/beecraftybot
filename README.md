@@ -22,8 +22,6 @@ npm start
 
 Todos los comandos se ubican en la carpeta de /commands con el respectivo nombre del comando, su estructura esta basada en el siguiente objeto
 
-_Dí cómo será ese paso_
-
 ```
  name: Nombre del comando (lo que el usuario debe de tipar para que ejecute)
   description?: La descripcion del comando

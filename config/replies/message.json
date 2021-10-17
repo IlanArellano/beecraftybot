@@ -1,0 +1,12 @@
+{
+    "INCOMPLETE_COMMAND":"El comando que acabas de escibir esta incompleto, recuerda que es {0}{1} mas {2}.\n\n\n Ejemplo: {3}",
+
+    "ADDED_TO_WHITELIST":"Added {0} to the whitelist",
+    "ADDED_TO_WHITELIST_MESSAGE":"Felicidades! has sido añadido al servidor para que puedas ingresar",
+    "PLAYER_ALREADY_WHITELISTED":"Player is already whitelisted",
+    "PLAYER_ALREADY_WHITELISTED_MESSAGE":"El usuario que has ingresado ya ha sido registrado en el servidor",
+
+    "SYNTAX_ERROR":"Ha ocurrido un error:( revisa bien si has escrito correctamente el comando",
+    "NO_COMMAND_ERROR": "Este comando no acepta argumentos",
+    "COMMON_ERROR": "Ha ocurrido un error"
+}

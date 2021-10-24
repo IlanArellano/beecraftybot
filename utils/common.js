@@ -9,11 +9,11 @@ const Sleep = async (time) => {
 };
 
 /**
- * Transforma un string en el formato '{0}' a un nuevo string asignando la posicion de sus argumentos
- * @param {string} str
- * @param  {...any} args
+ * Similar al método String.format() en c#, Transforma un string en el formato '{0}' a un nuevo string asignando la posicion de sus argumentos
+ * @param {string} str - El string que va a matchear con los argumentos
+ * @param  {...any} args - Los argumentos que se pasarán al string
  *
- * @returns {string}
+ * @returns {string} - El nuevo string Formateado con sus argumentos
  */
 const Format = (str, ...args) => {
   return str.replace(/{(\d+)}/g, (match, number) => {

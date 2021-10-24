@@ -46,6 +46,10 @@ client.on("message", (message) => {
   }
 });
 
+client.on("guildMemberRemove", (member) => {
+  console.log(member);
+});
+
 client.on("guildMemberSpeaking", (member) => {
   const channel = member.guild.channels.cache;
 

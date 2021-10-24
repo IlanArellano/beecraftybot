@@ -1,5 +1,6 @@
 {
     "INCOMPLETE_COMMAND":"El comando que acabas de escibir esta incompleto, recuerda que es {0}{1} mas {2}.\n\n\n Ejemplo: {3}",
+    "INVALID_USERNAME":"El usuario '{0}' que has ingresado no es valido, los nombres de Minecraft son entre 3 y 16 carácteres",
 
     "ADDED_TO_WHITELIST":"Added {0} to the whitelist",
     "ADDED_TO_WHITELIST_MESSAGE":"Felicidades! has sido añadido al servidor para que puedas ingresar",
@@ -8,5 +9,6 @@
 
     "SYNTAX_ERROR":"Ha ocurrido un error:( revisa bien si has escrito correctamente el comando",
     "NO_COMMAND_ERROR": "Este comando no acepta argumentos",
-    "COMMON_ERROR": "Ha ocurrido un error"
+    "COMMON_ERROR": "Ha ocurrido un error inesperado",
+    "SERVER_CONNECTION_ERROR":"No se ha podido establecer conexion con el servidor, informar a un miembro del staff sobre este error"
 }

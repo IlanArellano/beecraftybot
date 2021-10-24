@@ -1,14 +1,15 @@
 const client = require("../service/minecraft");
 const replies = require("../config/replies");
 const { Format } = require("../utils/common");
+const getClientIp = require("../service/ip/getClientIp");
+const AddToWLController = require("../controllers/addUserToWhitelist");
+const { DeleteUser } = require("../controllers/users");
 
 module.exports = {
   name: "register",
   description: "Registra un miembro de discord a la whitelist del servidor",
   args: true,
   execute(message, args) {
-    console.log(message.author.id);
-
     if (args.length === 0)
       return message.reply(
         Format(
@@ -22,26 +23,46 @@ module.exports = {
     if (args.length > 1) return message.reply(replies.SYNTAX_ERROR);
 
     const gt = args[0];
+    const defaultIp = "0.0.0.0";
 
-    client.on("output", (msg) => {
-      const matchMessage = Format(replies.ADDED_TO_WHITELIST, gt);
-      const out =
-        msg === matchMessage
-          ? replies.ADDED_TO_WHITELIST_MESSAGE
-          : replies.PLAYER_ALREADY_WHITELISTED_MESSAGE;
+    if (gt.length < 3 || gt.length > 16)
+      return message.reply(Format(replies.INVALID_USERNAME, gt));
 
-      message.reply(out);
+    client.on("output", async (msg) => {
+      //Pierde la conexion con el servidor para ya no emita mas el evento
+      await client.close();
 
-      client.close();
+      //Evalua si la consola le lanza el mensaje de que el username ya esta registrado en la whitelist
+      if (msg === replies.PLAYER_ALREADY_WHITELISTED)
+        return message.reply(replies.PLAYER_ALREADY_WHITELISTED_MESSAGE);
+
+      return message.reply(replies.ADDED_TO_WHITELIST_MESSAGE);
     });
 
     (async () => {
       try {
+        const username = message.author.username;
+        //Obtiene la Ip publica
+        const ip = await getClientIp();
+
+        //Agrega los datos del usuario a la base de datos
+        const { estatus, output } = await AddToWLController({
+          username: gt,
+          username_discord: username,
+          ip: ip ?? defaultIp,
+        });
+
+        if (!estatus) return message.reply(output);
+
         await client.connect();
         client.run(`whitelist add ${gt}`);
       } catch (error) {
-        console.error(error);
-        client.close();
+        const { estatus, output } = await DeleteUser({
+          username: gt,
+          desactivate: false,
+        });
+        console.log(estatus, output);
+        return message.reply(replies.SERVER_CONNECTION_ERROR);
       }
     })();
   },

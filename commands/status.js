@@ -1,11 +1,14 @@
-const { MessageEmbed } = require("discord.js");
 const model = require("../models/embed/statusModel");
+const {setEmbed} = require('../models/embed');
 
 module.exports = {
   name: "status",
   desciption: "Mostrara el estatus del jugador",
   args: false,
   execute(message, args) {
-    message.channel.send("ss");
+
+    const embed = setEmbed(model);
+
+    message.channel.send({ embeds: [embed]});
   },
 };

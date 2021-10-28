@@ -2,10 +2,11 @@ const fs = require("fs");
 const replies = require("./config/replies");
 require("dotenv").config();
 
+
 //Requerimos todas las clases necesarias para el Bot
-const { Client, Collection } = require("discord.js");
+const { Client, Collection, Intents } = require("discord.js");
 //Asignamos una nueva instancia para el cliente
-const client = new Client();
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
 //Leeremos todos los archivos de la carpeta commands para iterar el arreglo de nuestro directorio
 client.commands = new Collection();
@@ -26,7 +27,7 @@ for (const file of commandFiles) {
   client.commands.set(command.name, command);
 }
 
-client.on("message", (message) => {
+client.on("messageCreate", (message) => {
   if (!message.content.startsWith(prefix) || message.author.bot || !prefix)
     return;
   const content = message.content.slice(prefix.length).trim().split(/ +/);

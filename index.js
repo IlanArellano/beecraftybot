@@ -42,7 +42,7 @@ client.on("message", (message) => {
     client.commands.get(command).execute(message, args);
   } catch (error) {
     console.log(error);
-    message.reply(replies.COMMON_ERROR + error);
+    message.reply(`${replies.COMMON_ERROR}: ${error}`);
   }
 });
 

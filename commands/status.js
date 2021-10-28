@@ -1,8 +1,11 @@
+const { MessageEmbed } = require("discord.js");
+const model = require("../models/embed/statusModel");
+
 module.exports = {
   name: "status",
   desciption: "Mostrara el estatus del jugador",
   args: false,
   execute(message, args) {
-    message.reply("Mostrará el estatus general del jugador");
+    message.channel.send("ss");
   },
 };

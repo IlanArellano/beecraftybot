@@ -1,11 +1,6 @@
 const getContext = require("../../service/db");
 const replies = require("../../config/replies");
 
-/**
- * Desactiva un usuario o lo elimina permanentemente
- * @param {string} username El nombre de usuario
- * @param {boolean} desactivate si es true solo lo desactivara en la base de datos pero sin eliminarlo
- */
 module.exports = async ({ username, desactivate = false }) => {
   try {
     const pool = await getContext();

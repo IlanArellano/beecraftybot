@@ -2,8 +2,10 @@ const client = require("../service/minecraft");
 const replies = require("../config/replies");
 const { Format } = require("../utils/common");
 const getClientIp = require("../service/ip/getClientIp");
-const AddToWLController = require("../controllers/addUserToWhitelist");
-const { DeleteUser } = require("../controllers/users");
+const {
+  addUserController,
+  deleteUserController,
+} = require("../controllers/users");
 
 module.exports = {
   name: "register",
@@ -46,7 +48,7 @@ module.exports = {
         const ip = await getClientIp();
 
         //Agrega los datos del usuario a la base de datos
-        const { estatus, output } = await AddToWLController({
+        const { estatus, output } = await addUserController({
           username: gt,
           username_discord: username,
           ip: ip ?? defaultIp,
@@ -57,7 +59,7 @@ module.exports = {
         await client.connect();
         client.run(`whitelist add ${gt}`);
       } catch (error) {
-        const { estatus, output } = await DeleteUser({
+        const { estatus, output } = await deleteUserController({
           username: gt,
           desactivate: false,
         });

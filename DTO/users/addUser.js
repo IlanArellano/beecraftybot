@@ -1,5 +1,5 @@
-const getContext = require("../service/db");
-const replies = require("../config/replies/index");
+const getContext = require("../../service/db");
+const replies = require("../../config/replies");
 
 module.exports = async ({ username, username_discord, ip }) => {
   try {

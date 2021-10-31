@@ -44,6 +44,7 @@ module.exports = {
     (async () => {
       try {
         const username = message.author.username;
+        const id_username_discord = message.author.id ?? "";
         //Obtiene la Ip publica
         const ip = await getClientIp();
 
@@ -52,6 +53,7 @@ module.exports = {
           username: gt,
           username_discord: username,
           ip: ip ?? defaultIp,
+          id_username_discord,
         });
 
         if (!estatus) return message.reply(output);

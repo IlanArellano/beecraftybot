@@ -10,5 +10,6 @@
     "SYNTAX_ERROR":"Ha ocurrido un error:( revisa bien si has escrito correctamente el comando",
     "NO_COMMAND_ERROR": "Este comando no acepta argumentos",
     "COMMON_ERROR": "Ha ocurrido un error inesperado",
+    "EMPTY_VALUE_ERROR": "Ha ocurrido un error, no se pudo registrar correctamente tu {0}. Por favor intentalo mas tarde, si el problema persiste acude con un miembro del staff.",
     "SERVER_CONNECTION_ERROR":"No se ha podido establecer conexion con el servidor, informar a un miembro del staff sobre este error"
 }

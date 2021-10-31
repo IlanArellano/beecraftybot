@@ -1,7 +1,11 @@
 const { addUser, deleteUser } = require("../../DTO/users");
 
-const addUserController = ({ username, username_discord, ip }) =>
-  addUser({ username, username_discord, ip });
+const addUserController = ({
+  username,
+  username_discord,
+  ip,
+  id_username_discord,
+}) => addUser({ username, username_discord, ip, id_username_discord });
 
 /**
  * Desactiva un usuario o lo elimina permanentemente

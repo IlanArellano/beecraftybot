@@ -1,4 +1,3 @@
-
 /**
  * Funcion asincrona que pausa el proceso en un cierto numero de milisegundos
  * @param {number} time
@@ -23,45 +22,57 @@ const Format = (str, ...args) => {
 };
 
 /**
- * 
+ *
  * @param {any} el
- * Transforma cualquie tipo de dato en un string, dependiendo de la entrada del tipo de dato es como va a devolver un string 
- * @returns 
+ * Transforma cualquie tipo de dato en un string, dependiendo de la entrada del tipo de dato es como va a devolver un string
+ * @returns
  */
 const parseToString = (el) => {
   //Si es array
-  if(Array.isArray(el)) return "[]!";
+  if (Array.isArray(el)) return "[]!";
 
   //Si es numero
-  if(!Number.isNaN(el)) return `${el}`;
+  if (!Number.isNaN(el)) return `${el}`;
 
   //Si es un objeto
-  if(typeof el === 'object') return JSON.stringify(el);
+  if (typeof el === "object") return JSON.stringify(el);
 
   //Si es null o undefined
-  if(el === undefined || el === null) return "";
+  if (el === undefined || el === null) return "";
 
   //Si es una funcion
-  if(typeof el === 'function') {
+  if (typeof el === "function") {
     const args = [];
-    if(el(...args) === undefined) return "";
+    if (el(...args) === undefined) return "";
     return parseToString(el(...args));
   }
 
   //Si la entrada es un string devuelve el mismo string
   return el;
-}
+};
 
-
+/**
+ * Busca en un array de arrays un elemento en concreto
+ * @param {*} data
+ * @param {*} search
+ * @returns
+ */
+const FEArrayFromArrays = (data, search) => {
+  return data.find((el) => {
+    const [k, _] = el;
+    return k === search;
+  });
+};
 
 const stringObjectFormat = (obj) => {
   const keys = Object.keys(obj);
 
   return obj;
-}
+};
 
 module.exports = {
   Sleep,
   Format,
-  parseToString
+  parseToString,
+  FEArrayFromArrays,
 };

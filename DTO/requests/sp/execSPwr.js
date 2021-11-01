@@ -31,6 +31,7 @@ module.exports = async (name, params) => {
       output: response.output,
     };
   } catch (error) {
+    console.log(error);
     return responseErrorSPwr;
   }
 };

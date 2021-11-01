@@ -6,6 +6,7 @@
     "ADDED_TO_WHITELIST_MESSAGE":"Felicidades! has sido añadido al servidor para que puedas ingresar",
     "PLAYER_ALREADY_WHITELISTED":"Player is already whitelisted",
     "PLAYER_ALREADY_WHITELISTED_MESSAGE":"El usuario que has ingresado ya ha sido registrado en el servidor",
+    "USER_NO_REGISTERED":"Este usuario aun no tiene una cuenta de minecraft a este servidor",
 
     "SYNTAX_ERROR":"Ha ocurrido un error:( revisa bien si has escrito correctamente el comando",
     "NO_COMMAND_ERROR": "Este comando no acepta argumentos",

@@ -1,22 +1,14 @@
-const getContext = require("../../service/db");
-const replies = require("../../config/replies");
+const { execSPwr } = require("../requests/sp");
+const { responseErrorEmptySPwr } = require("../../models/errors/sp");
 
-module.exports = async ({ id_username_discord, username }) => {
-  const pool = await getContext();
-  try {
-    const res =
-      await pool.query`EXEC [dbo].[GET_USER_INFO] ${id_username_discord}, ${username}`;
-    const response = res.recordset[0];
-    return {
-      estatus: response.estatus ?? false,
-      output: response.msg ?? replies.COMMON_ERROR,
-    };
-  } catch (error) {
-    return {
-      estatus: false,
-      output: replies.COMMON_ERROR,
-    };
-  } finally {
-    pool.close();
-  }
+module.exports = async (data) => {
+  const valueEmpty = Object.values(data).find(
+    (el) => el === undefined || el === null || el === ""
+  );
+  if (valueEmpty) return responseErrorEmptySPwr(valueEmpty);
+
+  let params = [];
+  params[0] = data.id_username_discord;
+
+  return await execSPwr("GET_USER_INFO", params);
 };

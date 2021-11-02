@@ -2,7 +2,6 @@ const model = require("../models/embed/statusModel");
 const { setEmbed } = require("../models/embed");
 const { getStatusUserController } = require("../controllers/users");
 const replies = require("../config/replies");
-const rangos = require("../models/schema/ranks");
 
 module.exports = {
   name: "status",
@@ -19,7 +18,7 @@ module.exports = {
       const info = {
         name: split[0],
         estatus: split[1] === "1" ? "Activo" : "No activo",
-        rango: rangos[split[2]],
+        rango: split[2],
       };
 
       console.log(info);

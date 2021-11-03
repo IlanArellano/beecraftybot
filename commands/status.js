@@ -1,6 +1,7 @@
 const model = require("../models/embed/statusModel");
 const { setEmbed } = require("../models/embed");
 const { getStatusUserController } = require("../controllers/users");
+const { getMinecraftUserController } = require("../controllers/minecraft");
 const replies = require("../config/replies");
 
 module.exports = {
@@ -21,7 +22,13 @@ module.exports = {
         rango: split[2],
       };
 
+      const minecraftInfo = await getMinecraftUserController({
+        username: "LordV20",
+      });
+
       console.log(info);
+      console.log(minecraftInfo);
+      model.thumbnail.url = minecraftInfo?.url ?? model?.thumbnail.url;
       const embed = setEmbed(model);
 
       message.channel.send({ embeds: [embed] });

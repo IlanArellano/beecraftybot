@@ -12,11 +12,16 @@ const getUUID = async ({ username }) => {
         res: res.data,
         error: false,
       };
+    } else if (res.status === 204) {
+        return {
+            res: null,
+            error: false
+        }
     }
-    return endpointSchema({ res: null, error: true });
+    return endpointSchema({ res: undefined, error: true });
   } catch (error) {
     console.log(error);
-    return endpointSchema({ res: null, error: true });
+    return endpointSchema({ res: undefined, error: true });
   }
 };
 

@@ -22,6 +22,11 @@ module.exports = {
       value: null,
       inline: false,
     },
+    {
+      name: "Moneda",
+      value: "0",
+      inline: false,
+    },
   ],
   image: {
     url: "https://i.imgur.com/AfFp7pu.png",
@@ -29,6 +34,6 @@ module.exports = {
   timestamp: new Date(),
   footer: {
     text: replies.ACTIVE_USER,
-    icon_url: "https://i.imgur.com/AfFp7pu.png",
+    icon_url: "https://raw.githubusercontent.com/IlanArellano/serverPage/main/public/statics/icon.png",
   },
 };
